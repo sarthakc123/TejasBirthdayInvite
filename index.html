@@ -28,6 +28,19 @@
       text-decoration: underline;
     }
 
+    .banner {
+      width: 100%;
+      max-height: 250px;
+      object-fit: cover;
+      border-radius: 12px;
+      margin-bottom: 1rem;
+    }
+
+    .audio-player {
+      width: 100%;
+      margin-bottom: 2rem;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         font-size: 14px;
@@ -36,30 +49,41 @@
   </style>
 </head>
 <body>
+
+  <!-- 🎉 Fun Party Banner -->
+  <img class="banner" src="https://media.giphy.com/media/3o7abKhOpu0NwenH3O/giphy.gif" alt="Party Time" />
+
+  <!-- 🎵 Background Music -->
+  <audio class="audio-player" autoplay loop controls>
+    <source src="https://www.bensound.com/bensound-music/bensound-dubstep.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
+
+  <!-- 💻 Code-Style Birthday Invite -->
   <pre><span class="comment">// tejasBirthdayInvite.js</span>
 
 <span class="keyword">const</span> TejasStyleBirthdayInvite <span class="keyword">=</span> {
   <span class="property">host</span>: <span class="string">"Tejas"</span>,
-  <span class="property">age</span>: <span class="number">Almost 27 ;)</span>,
+  <span class="property">age</span>: <span class="string">"Almost 27 ;)"</span>,
   <span class="property">date</span>: <span class="string">"3rd July at 9:00 PM"</span>,
   <span class="property">location</span>: <span class="string">"Apt 605, 304 E Daniel St"</span>,
   <span class="property">dressCode</span>: <span class="string">"Party Casual"</span>,
   <span class="property">message</span>: <span class="string">"🎉 You're invited to an unforgettable birthday bash!"</span>,
   <span class="property">countdown</span>: <span class="string countdown" id="countdown">Calculating...</span>,
-  <span class="property">RSVP</span>: <a href="mailto:sarthu2008@gmail.com?subject=RSVP for Tejas's Birthday"><span class="string">"Click to RSVP via Email(Share your most memorable moment w Tejas)"</span></a>
+  <span class="property">RSVP</span>: <a href="mailto:sarthu2008@gmail.com?subject=RSVP for Tejas's Birthday"><span class="string">"Click to RSVP via Email (Share your most memorable moment w Tejas)"</span></a>
 };
 </pre>
 
   <script>
     const countdownElem = document.getElementById("countdown");
 
-    // Set countdown to tomorrow at 7:00 PM local time
+    // Set countdown to tomorrow at 9:00 PM local time
     const now = new Date();
-    const tomorrow = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1, 19, 0, 0); // 7 PM tomorrow
+    const partyDate = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1, 21, 0, 0); // 9 PM tomorrow
 
     function updateCountdown() {
       const now = new Date();
-      const diff = tomorrow - now;
+      const diff = partyDate - now;
 
       if (diff <= 0) {
         countdownElem.textContent = "🎉 It's party time!";
