@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Tejas's 27th Birthday // Invite.js</title>
+  <style>
+    body {
+      background-color: #1e1e1e;
+      color: #d4d4d4;
+      font-family: 'Courier New', monospace;
+      padding: 2rem;
+    }
+
+    .keyword { color: #569cd6; }
+    .string { color: #ce9178; }
+    .number { color: #b5cea8; }
+    .comment { color: #6a9955; font-style: italic; }
+    .property { color: #9cdcfe; }
+    .countdown { color: #dcdcaa; font-weight: bold; }
+
+    a {
+      color: #4fc1ff;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    @media screen and (max-width: 600px) {
+      body {
+        font-size: 14px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <pre><span class="comment">// tejasBirthdayInvite.js</span>
+
+<span class="keyword">const</span> birthdayInvite <span class="keyword">=</span> {
+  <span class="property">host</span>: <span class="string">"Tejas"</span>,
+  <span class="property">age</span>: <span class="number">27</span>,
+  <span class="property">date</span>: <span class="string">"3rd JUly at 7:00 PM"</span>,
+  <span class="property">location</span>: <span class="string">"Tejas's Place"</span>,
+  <span class="property">dressCode</span>: <span class="string">"Party Casual"</span>,
+  <span class="property">message</span>: <span class="string">"🎉 You're invited to an unforgettable birthday bash!"</span>,
+  <span class="property">countdown</span>: <span class="string countdown" id="countdown">Calculating...</span>,
+  <span class="property">RSVP</span>: <a href="mailto:your-email@example.com?subject=RSVP for Tejas's Birthday"><span class="string">"Click to RSVP"</span></a>
+};
+</pre>
+
+  <script>
+    const countdownElem = document.getElementById("countdown");
+
+    // Set countdown to tomorrow at 7:00 PM local time
+    const now = new Date();
+    const tomorrow = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1, 19, 0, 0); // 7 PM tomorrow
+
+    function updateCountdown() {
+      const now = new Date();
+      const diff = tomorrow - now;
+
+      if (diff <= 0) {
+        countdownElem.textContent = "🎉 It's party time!";
+        return;
+      }
+
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+      const minutes = Math.floor((diff / (1000 * 60)) % 60);
+      const seconds = Math.floor((diff / 1000) % 60);
+
+      countdownElem.textContent = `⏳ ${days}d ${hours}h ${minutes}m ${seconds}s to go`;
+    }
+
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+  </script>
+</body>
+</html>
